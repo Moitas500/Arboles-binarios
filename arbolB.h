@@ -1,4 +1,5 @@
 #include "cola.h"
+#include "pila.h"
 #include <iostream>
 #ifndef ARBOLB_H     
 #define AEBOLB_H 
@@ -8,19 +9,20 @@ struct Nodo{int info;
            Nodo *izq, *der;};
 
 class arbolB{Nodo *raiz;
-    cola *listInorden, *listPreorden, *listPosorden;
+    pila *listInorden;
+	cola *listPreorden, *listPosorden;
     public: arbolB(){raiz = NULL;
-                        listInorden = new cola;
+                        listInorden = new pila;
                         listPreorden = new cola;
                         listPosorden = new cola;}
 
         void insertar(int dato);
-        nodo *buscarpadre(int dato, nodo *p);
+        nodo *buscarpadre(int dato, Nodo *p);
         void eliminar(int dato);
-        nodo *buscar_nodo(int dato, nodo **padre);
-        void inorden(nodo *inicio);
-        void preorden(nodo *inicio);
-        void posorden(nodo *inicio);
+        nodo *buscar_nodo(int dato, Nodo **padre);
+        void inorden(Nodo *inicio);
+        void preorden(Nodo *inicio);
+        void posorden(Nodo *inicio);
         void imprimir();
        	~arbolB();
 };
@@ -77,6 +79,17 @@ void arbolB::imprimir(){
 	}
 	else {
 		cout<<"derecha "<<"Vacio"<<endl;	
+	}
+}
+void arbolB::inorden(Nodo *inicio){
+	while(!listInorden.PilaVacia()|| inicio != NULL ){
+		if(inicio != NULL){
+			listInorden.Push();
+			inicio->inicio.iz;
+		}else{
+			inicio-> listInorden.Pop();
+			inicio-> inicio.der;
+		}
 	}
 }
 #endif
