@@ -10,7 +10,8 @@ struct Nodo{int info;
 
 class arbolB{Nodo *raiz;
     pila *listInorden;
-	cola *listPreorden, *listPosorden;
+    pila *listPreorden;
+	cola *listPosorden;
     public: arbolB(){raiz = NULL;
                         listInorden = new pila;
                         listPreorden = new cola;
@@ -81,6 +82,26 @@ void arbolB::imprimir(){
 		cout<<"derecha "<<"Vacio"<<endl;	
 	}
 }
+
+void arbolB::preorden(Nodo *inicio){
+	if(inicio = NULL){
+		return 
+	}
+	
+	listPreorden.Push(inicio);
+	
+	while(!listPreorden.PilaVacia()){
+		listPreorden.Pop();
+		if(inicio.der != NULL){
+			listPreorden.Push(inicio.der);
+		}
+		if(inicio.izq != NULL){
+			listPreorden.Push(inicio.izq);
+		}
+	}
+	
+}
+
 void arbolB::inorden(Nodo *inicio){
 	while(!listInorden.PilaVacia()|| inicio != NULL ){
 		if(inicio != NULL){
