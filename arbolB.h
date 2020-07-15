@@ -10,8 +10,7 @@ struct Nodo{int info;
 
 class arbolB{Nodo *raiz;
     pila *listInorden;
-    pila *listPreorden;
-	cola *listPosorden;
+	cola *listPreorden,*listPosorden;
     public: arbolB(){raiz = NULL;
                         listInorden = new pila;
                         listPreorden = new cola;
@@ -88,15 +87,14 @@ void arbolB::preorden(Nodo *inicio){
 		return 
 	}
 	
-	listPreorden.Push(inicio);
+	listPreorden.InsCola(inicio);
 	
 	while(!listPreorden.PilaVacia()){
-		listPreorden.Pop();
 		if(inicio.der != NULL){
-			listPreorden.Push(inicio.der);
+			listPreorden.InsCola(inicio.der);
 		}
 		if(inicio.izq != NULL){
-			listPreorden.Push(inicio.izq);
+			listPreorden.InsCola(inicio.izq);
 		}
 	}
 	

@@ -2,8 +2,6 @@
 #define PILA_H    
 #include "estructura1.h"
 
-
-
 class pila{nodo *cab;
       public: pila(){cab= new nodo;
                      cab->dato=' ';
