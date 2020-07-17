@@ -126,13 +126,15 @@ void arbolB::preorden(){
 }
 
 void arbolB::inorden(){
-	while(!listInorden->PilaVacia() || raiz != NULL){
-		if(raiz != NULL){
-			listInorden->Push(raiz->info);
-			raiz = raiz->izq;
+	Nodo *aux;
+	aux = raiz;
+	while(!listInorden->PilaVacia() || aux != NULL){
+		if(aux != NULL){
+			listInorden->Push(aux->info);
+			aux = aux->izq;
 		}else{
 			listInorden->Pop();
-			raiz = raiz->der;
+			aux = aux->der;
 		}
 	}
 	listInorden->recorrer();
@@ -140,13 +142,15 @@ void arbolB::inorden(){
 
 void arbolB::posorden(){
 	Nodo *aux;
-	while(!listPosorden->PilaVacia() || raiz != NULL){
-		if(raiz != NULL){
-			listPosorden->Push(raiz->info);
-			raiz = raiz->izq;
+	Nodo *aux2;
+	aux2 = raiz;
+	while(!listPosorden->PilaVacia() || aux2 != NULL){
+		if(aux2 != NULL){
+			listPosorden->Push(aux2->info);
+			aux2 = aux2->izq;
 		}else{
-			if(raiz->der != NULL && aux != raiz->der){
-				raiz = raiz->der;
+			if(aux2->der != NULL && aux != aux2->der){
+				aux2 = aux2->der;
 			}else{
 				listPosorden->Push(aux->info);
 			}
