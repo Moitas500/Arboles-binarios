@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class cola{nodo *cab,*fin;
+class cola{nodo<int> *cab,*fin;
       public: cola(){cab=fin=NULL;}
       void InsCola(int i);
       char AtenderCola();
@@ -17,8 +17,8 @@ class cola{nodo *cab,*fin;
  };
 
 void cola::InsCola(int i){
-     nodo *nuevo;
-     nuevo= new nodo;
+     nodo<int> *nuevo;
+     nuevo= new nodo<int>;
      nuevo->dato=i;
      nuevo->sig= NULL;
      if (cab==NULL)
@@ -31,7 +31,7 @@ void cola::InsCola(int i){
 
 char cola::AtenderCola()
 {   char x;
-    nodo *aux = cab; 
+    nodo<int> *aux = cab; 
     cab=aux->sig;
     x=aux->dato;
     delete aux;
@@ -39,7 +39,7 @@ char cola::AtenderCola()
     }
 
 void cola::ImprimirCola(){
-     nodo *aux;
+     nodo<int> *aux;
      aux=cab;
      while(aux!=NULL){
        cout<<aux->dato<<" ";
@@ -51,7 +51,7 @@ bool cola::ColaVacia(){
      }
 
 cola::~cola(){
-     nodo *aux;
+     nodo<int> *aux;
      while(cab!=NULL)
        {aux= cab;
         cab=aux->sig;

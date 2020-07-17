@@ -1,39 +1,39 @@
 #ifndef PILA_H     
 #define PILA_H    
 #include "estructura.h"
-
-class pila{nodo *cab;
-      public: pila(){cab= new nodo;
-                     cab->dato=' ';
+template <class T>
+class pila{nodo<T> *cab;
+      public: pila(){cab= new nodo<T>;
+                     cab->dato=NULL;
                      cab->sig=NULL;}
-             void Push(int v);
-             char Pop();
+             void Push(T v);
+             T Pop();
              bool PilaVacia();
              ~pila();
       };
-     
-void pila::Push(int v){
-     nodo *t = new nodo;
+template <class T>   
+void pila<T>::Push(T v){
+     nodo<T> *t = new nodo<T>;
      t->dato=v; 
      t->sig=cab->sig;
      cab->sig= t;
      }
-
-char pila::Pop(){
-     char x;
-     nodo *t= cab->sig;
+template <class T>
+T pila<T>::Pop(){
+     T x;
+     nodo<T> *t= cab->sig;
      cab->sig= t->sig; 
      x=t->dato;
      delete t;
      return x;
      }
-     
-bool pila::PilaVacia(){
+template <class T>    
+bool pila<T>::PilaVacia(){
       return cab->sig== NULL;
       }
-
- pila::~pila(){
-      nodo *t=cab;
+template <class T>
+ pila<T>::~pila(){
+      nodo<T> *t=cab;
      while (t!=NULL){
            cab=t;
            t=t->sig;

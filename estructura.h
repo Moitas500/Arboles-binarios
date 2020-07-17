@@ -1,7 +1,7 @@
 #ifndef ESTRUCTURA_H     
 #define ESTRUCTURA_H 
-
-struct nodo{int dato;
+template <class T>
+struct nodo{T dato;
         nodo *sig;
        };
        

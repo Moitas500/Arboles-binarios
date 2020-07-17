@@ -9,16 +9,16 @@ struct Nodo{int info;
            Nodo *izq, *der;};
 
 class arbolB{Nodo *raiz;
-    pila *listInorden;
-    pila *listPreorden;
-	pila *listPosorden;
+    pila<int> *listInorden;
+    pila<int> *listPreorden;
+	pila<int> *listPosorden;
     public: arbolB(){raiz = NULL;
-    					listInorden = new pila; 
-                        listPreorden = new pila;
-                        listPosorden = new pila;}
+    					listInorden = new pila<int>; 
+                        listPreorden = new pila<int>;
+                        listPosorden = new pila<int>;}
 
         void insertar(int dato);
-        Nodo *buscarpadre(int dato, Nodo *p);
+        Nodo *buscarpadre(int dato);
         void eliminar(int dato);
         Nodo *buscar_nodo(int dato);
         void inorden();
@@ -53,6 +53,27 @@ void arbolB::insertar(int dato){
 		}
 	}
 }
+
+Nodo * arbolB::buscarpadre(int dato){
+	Nodo *aux= raiz;
+	pila<Nodo *> p;
+	while(aux != NULL && aux->info != dato){
+		p.Push(aux);
+		if (dato>aux->info){
+			aux=aux->der;
+		} else {
+			aux=aux->izq;
+		}
+	}
+	if(aux == NULL || aux->info != dato){
+		cout<<"No se encontro un nodo con ese dato"<<endl;
+		aux=NULL;
+		return aux;
+	} else {
+		return p.Pop();
+	}
+}
+
 void arbolB::imprimir(){
 	Nodo *centro,*izquierda= NULL,*derecha=NULL;
 	centro=raiz;
@@ -85,7 +106,6 @@ void arbolB::imprimir(){
 
 void arbolB::preorden(Nodo *inicio){
 /*	if(inicio = NULL){
-
 	}
 	
 	listPreorden.InsCola(inicio);
