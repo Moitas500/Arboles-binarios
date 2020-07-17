@@ -4,19 +4,6 @@ CursorRow=4
 TopLine=1
 LeftChar=1
 [Editor_3]
-<<<<<<< Updated upstream
-CursorCol=17
-CursorRow=124
-TopLine=2
-LeftChar=1
-[Editor_1]
-CursorCol=1
-CursorRow=63
-TopLine=1
-LeftChar=1
-[Editor_4]
-CursorCol=21
-=======
 CursorCol=3
 CursorRow=3
 TopLine=1
@@ -28,16 +15,11 @@ TopLine=2
 LeftChar=1
 [Editor_4]
 CursorCol=21
->>>>>>> Stashed changes
 CursorRow=3
 TopLine=1
 LeftChar=1
 [Editors]
-<<<<<<< Updated upstream
 Order=3,1,2,0,4
-=======
-Order=3,1,2,0,4
->>>>>>> Stashed changes
 Focused=3
 [Editor_0]
 CursorCol=21
