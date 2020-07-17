@@ -22,8 +22,8 @@ class arbolB{Nodo *raiz;
         void eliminar(int dato);
         Nodo *buscar_nodo(int dato);
         void inorden();
-        void preorden(Nodo *inicio);
-        void posorden(Nodo *inicio);
+        void preorden();
+        void posorden();
         void imprimir();
        	~arbolB();
 };
@@ -104,26 +104,57 @@ void arbolB::imprimir(){
 	}
 }
 
-void arbolB::preorden(Nodo *inicio){
-/*	if(inicio = NULL){
-	}
-	
-	listPreorden.InsCola(inicio);
-	
-	while(!listPreorden.PilaVacia()){
-		if(inicio.der != NULL){
-			listPreorden.InsCola(inicio.der);
+void arbolB::preorden(){
+	if(raiz == NULL){
+		cout << "El arbol esta vacio";
+	}else{
+		listPreorden->Push(raiz->info);
+		
+		while(!listPreorden->PilaVacia()){
+			listPreorden->Pop();
+			
+			if(raiz->der != NULL){
+				listPreorden->Push(raiz->der->info);
+			}
+			if(raiz->izq != NULL){
+				listPreorden->Push(raiz->izq->info);
+			}
 		}
-		if(inicio.izq != NULL){
-			listPreorden.InsCola(inicio.izq);
-		}
 	}
-	*/
+	listPreorden->recorrer();
+
 }
 
 void arbolB::inorden(){
-
+	while(!listInorden->PilaVacia() || raiz != NULL){
+		if(raiz != NULL){
+			listInorden->Push(raiz->info);
+			raiz = raiz->izq;
+		}else{
+			listInorden->Pop();
+			raiz = raiz->der;
+		}
+	}
+	listInorden->recorrer();
 }
+
+void arbolB::posorden(){
+	Nodo *aux;
+	while(!listPosorden->PilaVacia() || raiz != NULL){
+		if(raiz != NULL){
+			listPosorden->Push(raiz->info);
+			raiz = raiz->izq;
+		}else{
+			if(raiz->der != NULL && aux != raiz->der){
+				raiz = raiz->der;
+			}else{
+				listPosorden->Push(aux->info);
+			}
+		}     
+	}	
+	listPosorden->recorrer();
+}
+
 Nodo *arbolB::buscar_nodo(int dato){
 	Nodo  *buscado=NULL;
 	if(raiz->info == dato){
@@ -155,9 +186,11 @@ void arbolB::eliminar(int dato){
 			padre->izq = NULL;
 		}
 	}else if(eliminado->der != NULL && eliminado->izq == NULL){
-		
+		padre->der = eliminado->der;
+		delete eliminado;
 	} else if(eliminado->der == NULL && eliminado->izq != NULL){
-		
+		padre->izq = eliminado->izq;
+		delete eliminado;
 	}else  if(eliminado->der != NULL && eliminado->izq != NULL){
 		
 	}

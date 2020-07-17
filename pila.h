@@ -7,6 +7,7 @@ class pila{nodo<T> *cab;
                      cab->dato=NULL;
                      cab->sig=NULL;}
              void Push(T v);
+             void recorrer();
              T Pop();
              bool PilaVacia();
              ~pila();
@@ -27,6 +28,17 @@ T pila<T>::Pop(){
      delete t;
      return x;
      }
+
+template <class T>   
+void pila<T>::recorrer(){
+	nodo<T> *t=cab;
+	while(t!=NULL){
+		cab=t;
+		cout << t->dato << endl;
+		t=t->sig;
+	}
+}
+ 
 template <class T>    
 bool pila<T>::PilaVacia(){
       return cab->sig== NULL;
