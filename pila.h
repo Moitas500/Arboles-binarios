@@ -34,9 +34,10 @@ void pila<T>::recorrer(){
 	nodo<T> *t=cab;
 	while(t!=NULL){
 		cab=t;
-		cout << t->dato << endl;
+		cout << t->dato ;
 		t=t->sig;
 	}
+	cout <<endl;
 }
  
 template <class T>    

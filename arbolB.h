@@ -126,26 +126,29 @@ void arbolB::preorden(){
 }
 
 void arbolB::inorden(){
-	while(!listInorden->PilaVacia() || raiz != NULL){
-		if(raiz != NULL){
-			listInorden->Push(raiz->info);
-			raiz = raiz->izq;
+	Nodo *aux= raiz;
+	while(!listInorden->PilaVacia() || aux != NULL){
+		if(aux != NULL){
+			listInorden->Push(aux->info);
+			aux = aux->izq;
 		}else{
 			listInorden->Pop();
-			raiz = raiz->der;
+			aux = aux->der;
 		}
 	}
 	listInorden->recorrer();
 }
 
 void arbolB::posorden(){
-	Nodo *aux;
-	while(!listPosorden->PilaVacia() || raiz != NULL){
-		if(raiz != NULL){
-			listPosorden->Push(raiz->info);
-			raiz = raiz->izq;
+	Nodo *aux=raiz;
+	Nodo *ultimoNodo;
+	while(!listPosorden->PilaVacia() || aux != NULL){
+		if(aux != NULL){
+			listPosorden->Push(aux->info);
+			aux = aux->izq;
 		}else{
-			if(raiz->der != NULL && aux != raiz->der){
+			ultimoNodo=buscarpadre(listPosorden->Pop());
+			if(aux->der != NULL && ultimoNodo != aux->der){
 				raiz = raiz->der;
 			}else{
 				listPosorden->Push(aux->info);
@@ -179,7 +182,7 @@ void arbolB::eliminar(int dato){
 	Nodo *padre, *padreR, *hijoR =NULL;
 	//cout<<eliminado->info<<endl;
 	if(eliminado->der == NULL && eliminado->izq == NULL){
-		//padre= buscar padre(dato o eliminado);
+		padre= buscarpadre(eliminado->info);
 		if(eliminado->info > padre->info){
 			padre->der = NULL;
 		}else{

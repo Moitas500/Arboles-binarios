@@ -20,11 +20,12 @@ int main(int argc, char** argv) {
 	cout<<"Buscando el padre "<<endl;
 	cout<<"El padre de 7 es "<<arbol->buscarpadre(7)->info<<endl;
 	cout<<arbol->buscar_nodo(3) ->info<<endl;
+	arbol->imprimir();
+	arbol->inorden();
 	arbol->eliminar(7);
 
-	arbol->inorden();
-	arbol->posorden();
-	arbol->preorden();
+
+	//arbol->preorden();
 	
 	return 0;
 }
