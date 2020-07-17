@@ -17,5 +17,7 @@ int main(int argc, char** argv) {
 	cout<<"Con 7"<<endl;
 	arbol->insertar(7);
 	arbol->imprimir();
+	cout<<arbol->buscar_nodo(3) ->info<<endl;
+	arbol->eliminar(7);
 	return 0;
 }

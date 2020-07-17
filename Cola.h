@@ -9,14 +9,14 @@ using namespace std;
 
 class cola{nodo *cab,*fin;
       public: cola(){cab=fin=NULL;}
-      void InsCola(char i);
+      void InsCola(int i);
       char AtenderCola();
       void ImprimirCola();
       bool ColaVacia();
       ~cola();
  };
 
-void cola::InsCola(char i){
+void cola::InsCola(int i){
      nodo *nuevo;
      nuevo= new nodo;
      nuevo->dato=i;

@@ -1,18 +1,18 @@
 #ifndef PILA_H     
 #define PILA_H    
-#include "estructura1.h"
+#include "estructura.h"
 
 class pila{nodo *cab;
       public: pila(){cab= new nodo;
                      cab->dato=' ';
                      cab->sig=NULL;}
-             void Push( char v);
+             void Push(int v);
              char Pop();
              bool PilaVacia();
              ~pila();
       };
      
-void pila::Push(char v){
+void pila::Push(int v){
      nodo *t = new nodo;
      t->dato=v; 
      t->sig=cab->sig;

@@ -1,4 +1,4 @@
-#include "cola.h"
+#include "Cola.h"
 #include "pila.h"
 #include <iostream>
 #ifndef ARBOLB_H     
@@ -10,17 +10,18 @@ struct Nodo{int info;
 
 class arbolB{Nodo *raiz;
     pila *listInorden;
-	cola *listPreorden,*listPosorden;
+    pila *listPreorden;
+	pila *listPosorden;
     public: arbolB(){raiz = NULL;
-                        listInorden = new pila;
-                        listPreorden = new cola;
-                        listPosorden = new cola;}
+    					listInorden = new pila; 
+                        listPreorden = new pila;
+                        listPosorden = new pila;}
 
         void insertar(int dato);
-        nodo *buscarpadre(int dato, Nodo *p);
+        Nodo *buscarpadre(int dato, Nodo *p);
         void eliminar(int dato);
-        nodo *buscar_nodo(int dato, Nodo **padre);
-        void inorden(Nodo *inicio);
+        Nodo *buscar_nodo(int dato);
+        void inorden();
         void preorden(Nodo *inicio);
         void posorden(Nodo *inicio);
         void imprimir();
@@ -78,13 +79,13 @@ void arbolB::imprimir(){
 		cout<<"derecha "<<derecha->info<<endl;
 	}
 	else {
-		cout<<"derecha "<<"Vacio"<<endl;	
+		cout<<"derecha "<<"Vacio"<<endl;
 	}
 }
 
 void arbolB::preorden(Nodo *inicio){
-	if(inicio = NULL){
-		return 
+/*	if(inicio = NULL){
+
 	}
 	
 	listPreorden.InsCola(inicio);
@@ -97,18 +98,49 @@ void arbolB::preorden(Nodo *inicio){
 			listPreorden.InsCola(inicio.izq);
 		}
 	}
-	
+	*/
 }
 
-void arbolB::inorden(Nodo *inicio){
-	while(!listInorden.PilaVacia()|| inicio != NULL ){
-		if(inicio != NULL){
-			listInorden.Push();
-			inicio->inicio.iz;
-		}else{
-			inicio-> listInorden.Pop();
-			inicio-> inicio.der;
+void arbolB::inorden(){
+
+}
+Nodo *arbolB::buscar_nodo(int dato){
+	Nodo  *buscado=NULL;
+	if(raiz->info == dato){
+		return raiz;
+	}else{
+		buscado=raiz;
+		while(buscado != NULL && buscado->info != dato){
+			if(dato>buscado->info){
+				buscado=buscado->der;
+			}else{
+				if(dato<buscado->info){
+					buscado=buscado->izq;
+				}
+			}
 		}
 	}
+	return buscado;
+	
 }
+void arbolB::eliminar(int dato){
+	Nodo *eliminado= buscar_nodo(dato);
+	Nodo *padre, *padreR, *hijoR =NULL;
+	//cout<<eliminado->info<<endl;
+	if(eliminado->der == NULL && eliminado->izq == NULL){
+		//padre= buscar padre(dato o eliminado);
+		if(eliminado->info > padre->info){
+			padre->der = NULL;
+		}else{
+			padre->izq = NULL;
+		}
+	}else if(eliminado->der != NULL && eliminado->izq == NULL){
+		
+	} else if(eliminado->der == NULL && eliminado->izq != NULL){
+		
+	}else  if(eliminado->der != NULL && eliminado->izq != NULL){
+		
+	}
+	}
+
 #endif
